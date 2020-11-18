@@ -1,7 +1,13 @@
 @import '../../styles';
 
 html, body {
-  font-family: 'Roboto', sans-serif;
+  font-family: $font-primary, sans-serif;
+  color: $color--primary;
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
 }
 
 .app {
