@@ -22,6 +22,7 @@ function Services() {
           className="reset--button"
           label="Reset"
           onClick={handleReset}
+          variant="outlined"
         />
       </div>
     </section>
