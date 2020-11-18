@@ -5,14 +5,23 @@
 
   .title {
     @include font-style($color--primary, 'Rubik', 39px, 300);
-    line-height: 46px;
+    margin-bottom: 16px;
   }
 
-  .reset--button{
-    width: 149px;
+  .services--action {
+    @include flex-layout();
+    align-items: flex-end;
+
+    .services--form-input {
+      margin-right: 8px;
+    }
+
+    .reset--button{
+      width: 149px;
+    }
+  }
+  .services--item {
+    margin: 24px 0;
   }
 
-  .filter--input {
-    width: 300px;
-  }
 }

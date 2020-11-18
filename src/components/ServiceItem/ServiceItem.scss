@@ -1,0 +1,39 @@
+@import '../../styles';
+
+.service-item--wrapper {
+  padding: 26px 32px 24px;
+  @include flex-layout();
+  @include flex-layout-align(space-between, center);
+
+  .name {
+    @include font-style($color-black, 'Roboto', 29px, 300);
+    line-height: 42px;
+  }
+
+  .description {
+    @include font-style($color--label, 'Roboto', 15px);
+    line-height: 22px;
+  }
+
+  .service-item--right {
+    @include flex-layout();
+    align-items: flex-end;
+
+    .service-item--form-input {
+      margin-right: 24px;
+    }
+
+    .input--append {
+      @extend .flex-center;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      padding: 16px;
+      cursor: pointer;
+    }
+
+    .activate--button {
+      width: 300px;
+    }
+  }
+}

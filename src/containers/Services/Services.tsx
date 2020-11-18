@@ -1,7 +1,7 @@
 import React from 'react';
 
 import BaseButton from '../../components/BaseButton';
-import BaseInput from '../../components/BaseInput';
+import FormInput from '../../components/FormInput';
 import ServiceItem from '../../components/ServiceItem';
 
 import './Services.scss';
@@ -14,10 +14,12 @@ function Services() {
   return (
     <section className="services--wrapper">
       <div className="title">Services</div>
-      <div>
-        <BaseInput
-          className="filter--input"
-          placeholder="Filter services.."
+      <div className="services--action">
+        <FormInput
+          className="services--form-input"
+          label="Filter"
+          placeholder="Filter services..."
+          value="adsf"
         />
         <BaseButton
           className="reset--button"
@@ -25,12 +27,19 @@ function Services() {
           onClick={handleReset}
           variant="outlined"
         />
-        <ServiceItem
-          name="ServiceName"
-          description="Description"
-          promoCode="asdf"
-        />
       </div>
+      <ServiceItem
+        className="services--item"
+        name="Sitecostructor.io"
+        description="Description"
+        promoCode="itpromocodes"
+      />
+      <ServiceItem
+        className="service-item"
+        name="Sitecostructor.io"
+        description="Description"
+        promoCode="itpromocodes"
+      />
     </section>
   )
 };

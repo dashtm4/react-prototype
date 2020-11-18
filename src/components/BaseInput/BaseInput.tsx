@@ -4,20 +4,28 @@ import clsx from 'clsx';
 import './BaseInput.scss';
 
 interface IProps {
-  className?: string,
-  placeholder?: string,
+  className?: string;
+  children?: any;
+  placeholder?: string;
+  value?: string;
 }
 
 function BaseInput({
   className: wrapperStyle,
+  children,
   placeholder,
+  value,
 }: IProps) {
   return (
-    <input
-      type="text"
-      className={clsx(wrapperStyle, "base-input--wrapper")}
-      placeholder={placeholder}
-    />
+    <div className={wrapperStyle}>
+      <input
+        type="text"
+        className={clsx("base-input--wrapper")}
+        placeholder={placeholder}
+        defaultValue={value}
+      />
+      {children}
+    </div>
   )
 };
 
