@@ -18,11 +18,11 @@ function Content({
 }: IProps) {
   return (
     <div className={clsx(wrapperStyle, "content--wrapper")}>
-        <Switch>
-          <Route>
-            <Services />
-          </Route>
-        </Switch>
+      <Switch>
+        <Route>
+          <Services />
+        </Route>
+      </Switch>
     </div>
   )
 }

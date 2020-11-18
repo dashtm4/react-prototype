@@ -9,3 +9,8 @@ export enum PATHS {
   TEST6 = '/test6',
   TEST7 = '/test7',
 };
+
+export enum CURRENCY_TYPES {
+  USD = '$',
+  EURO = '€',
+};

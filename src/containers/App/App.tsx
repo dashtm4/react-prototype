@@ -1,8 +1,7 @@
 import React from 'react';
-import {
-  BrowserRouter,
-
-} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import PerfectScrollbar from 'react-perfect-scrollbar';
+import 'react-perfect-scrollbar/dist/css/styles.css';
 
 import TopBar from '../TopBar';
 import SideBar from '../SideBar';
@@ -17,10 +16,10 @@ function App() {
       <BrowserRouter>
         <SideBar className="sidebar" />
         <TopBar />
-        <div>
+        <PerfectScrollbar>
           <Content className="content"/>
           <Footer />
-        </div>
+        </PerfectScrollbar>
       </BrowserRouter>
     </div>
   );

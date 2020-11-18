@@ -1,4 +1,4 @@
-import { PATHS } from '../../utils/constants/paths';
+import { PATHS } from '../../utils/constants';
 
 type TPaths = keyof typeof PATHS;
 

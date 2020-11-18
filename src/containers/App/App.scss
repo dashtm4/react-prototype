@@ -1,10 +1,14 @@
 @import '../../styles';
 
+html, body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .app {
   display: grid;
   grid-template-columns: $width--sidebar 1fr;
   grid-template-rows: $height--top-bar 1fr;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 .sidebar {

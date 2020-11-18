@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 
 import Logo from '../../components/Logo';
-import { PATHS } from '../../utils/constants/paths';
+import { PATHS } from '../../utils/constants';
 
 import { sidebarItems } from './constants';
 import { ISidebarItem } from './types';
