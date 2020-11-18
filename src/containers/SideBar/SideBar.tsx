@@ -16,14 +16,14 @@ interface IProps {
 function SideBar({
   className: wrapperStyle,
 }: IProps) {
-  const [selectedSidebarItem, setSelectedSidebarItem] = useState('HOME');
+  const [selectedSidebarItem, setSelectedSidebarItem] = useState('SERVICES');
 
   const handleRouting = (selectedLink: string) => () => {
     setSelectedSidebarItem(selectedLink);
   };
 
   return (
-    <div className={clsx(wrapperStyle, "wrapper")}>
+    <div className={clsx(wrapperStyle, "sidebar--wrapper")}>
       <div className="logo">
         <Logo />
       </div>

@@ -3,8 +3,11 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
+import clsx from 'clsx';
 
 import Services from '../Services';
+
+import './Content.scss';
 
 interface IProps {
   className?: string;
@@ -14,7 +17,7 @@ function Content({
   className: wrapperStyle,
 }: IProps) {
   return (
-    <div className={wrapperStyle}>
+    <div className={clsx(wrapperStyle, "content--wrapper")}>
         <Switch>
           <Route>
             <Services />
