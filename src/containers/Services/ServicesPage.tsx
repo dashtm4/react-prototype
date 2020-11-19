@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import BaseButton from '../../components/BaseButton';
 import FormInput from '../../components/FormInput';
@@ -32,6 +33,8 @@ function ServicesPage({
   handleUpdateSearchWord,
   handleActivate,
 }: IProps) {
+  const { t } = useTranslation();
+
   const handleReset = () => {
     handleUpdateSearchWord('');
   };
@@ -39,19 +42,19 @@ function ServicesPage({
   return (
     <section className="services--wrapper">
       <div className="title">
-        Services
+        {t('Services')}
       </div>
       <div className="services--action">
         <FormInput
           className="services--form-input"
-          label="Filter"
-          placeholder="Filter services..."
+          label={t('Filter')}
+          placeholder={t('Filter services...')}
           value={searchWord}
           onChange={handleUpdateSearchWord}
         />
         <BaseButton
           className="reset--button"
-          label="Reset"
+          label={t('Reset')}
           onClick={handleReset}
           variant="outlined"
         />

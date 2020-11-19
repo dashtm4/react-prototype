@@ -1,5 +1,6 @@
 import React, { RefObject } from 'react';
 import clsx from 'clsx';
+import { useTranslation } from 'react-i18next';
 
 import BaseCard from '../BaseCard';
 import FormInput from '../FormInput';
@@ -30,6 +31,8 @@ function ServiceItem({
   promoCode,
   onActivate,
 }: IProps) {
+  const { t } = useTranslation();
+
   const handlePrependClick = (ref: RefObject<HTMLInputElement>) => {
     ref?.current?.select();
     document.execCommand('copy');
@@ -52,7 +55,7 @@ function ServiceItem({
       <div className="service-item--right">
         <FormInput
           className="service-item--form-input"
-          label="Promocode"
+          label={t('Promocode')}
           value={promoCode}
           onChildrenClick={handlePrependClick}
         >
@@ -60,7 +63,7 @@ function ServiceItem({
         </FormInput>
         <BaseButton
           className="activate--button"
-          label={activated ? 'Activated' : 'Active bonus'}
+          label={activated ? t('Activated') : t('Activate bonus')}
           disabled={activated}
           onClick={handleActivate}
         />
