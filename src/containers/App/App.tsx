@@ -13,7 +13,7 @@ import './App.scss';
 
 function App() {
   const { t, i18n } = useTranslation();
-  i18n.changeLanguage('ie');
+  // i18n.changeLanguage('ie');
 
   return (
     <div className="app">

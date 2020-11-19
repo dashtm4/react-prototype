@@ -1,12 +1,14 @@
-import React, { RefObject } from 'react';
+import React, { useState, RefObject } from 'react';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
+import { Tooltip } from 'react-tippy';
 
 import BaseCard from '../BaseCard';
 import FormInput from '../FormInput';
 import BaseButton from '../BaseButton';
 import Clipboard from '../Clipboard';
 
+import 'react-tippy/dist/tippy.css';
 import './ServiceItem.scss';
 
 interface IProps {
@@ -32,10 +34,12 @@ function ServiceItem({
   onActivate,
 }: IProps) {
   const { t } = useTranslation();
-
+  const [showToolTip, setShowToolTip] = useState(false);
   const handlePrependClick = (ref: RefObject<HTMLInputElement>) => {
     ref?.current?.select();
     document.execCommand('copy');
+    setShowToolTip(true);
+    setTimeout(() => setShowToolTip(false), 500);
   };
 
   const handleActivate = () => {
@@ -53,14 +57,26 @@ function ServiceItem({
         </div>
       </div>
       <div className="service-item--right">
-        <FormInput
-          className="service-item--form-input"
-          label={t('Promocode')}
-          value={promoCode}
-          onChildrenClick={handlePrependClick}
+        {showToolTip}
+        <Tooltip
+          animation="perspective"
+          distance={-16}
+          duration={175}
+          offset={-24}
+          open={showToolTip}
+          position="top-end"
+          title={t('Copied!')}
+          trigger="manual"
         >
-          <Clipboard className="input--append"/>
-        </FormInput>
+          <FormInput
+            className="service-item--form-input"
+            label={t('Promocode')}
+            value={promoCode}
+            onChildrenClick={handlePrependClick}
+          >
+            <Clipboard className="input--append"/>
+          </FormInput>
+        </Tooltip>
         <BaseButton
           className="activate--button"
           label={activated ? t('Activated') : t('Activate bonus')}
