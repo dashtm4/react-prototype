@@ -9,6 +9,8 @@
   height: 48px;
   vertical-align: top;
   background-color: $color-white;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  transition-timing-function: ease;
 
   &:focus {
     border: 1px solid $color--focus;

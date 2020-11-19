@@ -8,7 +8,7 @@ import './Services.scss';
 
 function Services() {
   const handleReset = () => {
-    alert('reset');
+    console.log('reset');
   };
 
   return (
