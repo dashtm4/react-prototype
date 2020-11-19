@@ -48,7 +48,7 @@ const service = (
         status: {
           balance: status?.balance || initialStatus.balance,
           nextPayout: status?.next_payout || initialStatus.nextPayout,
-          currency: status?.currency || initialStatus.currency,
+          currency: status?.currency.toUpperCase() || initialStatus.currency,
         }
       };
       return newState;
