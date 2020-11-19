@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import clsx from 'clsx';
 
 import BaseCard from '../BaseCard';
@@ -21,6 +21,11 @@ function ServiceItem({
   description,
   promoCode,
 }: IProps) {
+  const handlePrependClick = (ref: RefObject<HTMLInputElement>) => {
+    ref?.current?.select();
+    document.execCommand('copy');
+  };
+
   return (
     <BaseCard className={clsx(wrapperStyle, "service-item--wrapper")}>
       <div>
@@ -36,6 +41,7 @@ function ServiceItem({
           className="service-item--form-input"
           label="Promocode"
           value={promoCode}
+          onChildrenClick={handlePrependClick}
         >
           <Clipboard className="input--append"/>
         </FormInput>

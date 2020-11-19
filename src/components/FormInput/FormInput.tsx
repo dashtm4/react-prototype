@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { RefObject } from 'react'
 import clsx from 'clsx';
 
 import BaseInput from '../BaseInput';
@@ -14,6 +14,7 @@ interface IProps {
   onChange?: (
     value: string,
   ) => void;
+  onChildrenClick?: (ref: RefObject<HTMLInputElement>) => void;
 }
 
 function FormInput({
@@ -23,6 +24,7 @@ function FormInput({
   placeholder,
   value,
   onChange,
+  onChildrenClick,
 }: IProps) {
   return (
     <div className={clsx(wrapperStyle, "form-input--wrapper")}>
@@ -32,6 +34,7 @@ function FormInput({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        onChildrenClick={onChildrenClick}
       >
         {children}
       </BaseInput>

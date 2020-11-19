@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createRef, RefObject } from 'react'
 import clsx from 'clsx';
 
 import './BaseInput.scss';
@@ -11,6 +11,7 @@ interface IProps {
   onChange?: (
     value: string,
   ) => void;
+  onChildrenClick?: (ref: RefObject<HTMLInputElement>) => void;
 }
 
 function BaseInput({
@@ -19,10 +20,19 @@ function BaseInput({
   placeholder,
   value,
   onChange,
+  onChildrenClick,
 }: IProps) {
+  const inputRef = createRef<HTMLInputElement>();
+
   const handleChange = (event: any) => {
     const updatedValue: string = event.target.value;
     if(onChange) onChange(updatedValue);
+  };
+
+  const handleChildrenClick = () => {
+    if (onChildrenClick) {
+      onChildrenClick(inputRef);
+    }
   };
 
   return (
@@ -32,9 +42,12 @@ function BaseInput({
         className={clsx("base-input--wrapper")}
         placeholder={placeholder}
         value={value}
+        ref={inputRef}
         onChange={handleChange}
       />
-      {children}
+      <div onClick={handleChildrenClick}>
+        {children}
+      </div>
     </div>
   )
 };
