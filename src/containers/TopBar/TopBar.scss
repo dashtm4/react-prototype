@@ -6,23 +6,42 @@
 
   .top-bar--status {
     @include flex-layout();
-    @include flex-layout-align(flex-start, center);
+    @include flex-layout-align(space-between, center);
 
-    &-item {
-      margin-right: 24px;
+    &-left {
+      @include flex-layout();
 
-      &:last-of-type {
-        margin-right: 0px;
+      .top-bar--status-item {
+        margin-right: 24px;
+
+        &:last-of-type {
+          margin-right: 0px;
+        }
+
+        .label {
+          @include font-style($color--label, 'Roboto', 13px);
+          line-height: 19px;
+        }
+
+        .price {
+          @include font-style($color--primary, 'Rubik', 19px);
+          line-height: 25.8px;
+        }
+      }
+    }
+
+    &-right {
+      @include flex-layout();
+
+      img {
+        margin-left: 10px;
+        padding: 1px;
+        border: 3px solid transparent;
+        cursor: pointer;
       }
 
-      .label {
-        @include font-style($color--label, 'Roboto', 13px);
-        line-height: 19px;
-      }
-
-      .price {
-        @include font-style($color--primary, 'Rubik', 19px);
-        line-height: 25.8px;
+      .active {
+        border: 3px solid $color--focus;
       }
     }
   }
