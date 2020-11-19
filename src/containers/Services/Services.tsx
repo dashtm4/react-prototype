@@ -1,19 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+import { getServices } from '../../selectors';
+import { fetchServices } from '../../redux/actions';
 import BaseButton from '../../components/BaseButton';
 import FormInput from '../../components/FormInput';
 import ServiceItem from '../../components/ServiceItem';
 
 import './Services.scss';
 
-function Services() {
+type TProps =
+  & ReturnType<typeof mapStateToProps>
+  & ReturnType<typeof mapDispatchToProps>;
+
+function Services({
+  services,
+  fetchServices,
+}: TProps) {
+  useEffect(() => {
+    fetchServices();
+  }, []);
+
   const handleReset = () => {
     console.log('reset');
+    console.log(services);
   };
 
   return (
     <section className="services--wrapper">
-      <div className="title">Services</div>
+      <div className="title">
+        Services
+      </div>
       <div className="services--action">
         <FormInput
           className="services--form-input"
@@ -44,4 +62,18 @@ function Services() {
   )
 };
 
-export default Services;
+
+const mapStateToProps = (state: any) => ({
+  services: getServices(state),
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  ...bindActionCreators(
+    {
+      fetchServices,
+    },
+    dispatch,
+  )
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Services);

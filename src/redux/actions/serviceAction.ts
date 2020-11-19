@@ -1,10 +1,10 @@
 const serviceActionTypes = {
   FETCH_SERVICES: 'FETCH_SERVICES',
+  FETCH_SERVICES_SUCCEED: 'FETCH_SERVICES_SUCCEED',
 };
 
-const fetchServices = (payload: any) => ({
+const fetchServices = () => ({
   type: serviceActionTypes.FETCH_SERVICES,
-  payload,
 });
 
 export {

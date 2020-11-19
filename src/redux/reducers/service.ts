@@ -32,9 +32,26 @@ const service = (
   action: any,
 ) => {
   switch (action.type) {
-    case actionTypes.FETCH_SERVICES:
-      const { payload: newState } = action;
-      return { ...newState };
+    case actionTypes.FETCH_SERVICES_SUCCEED:
+      const {
+        payload: {
+          bonuses: services,
+          header: status,
+        },
+      } = action;
+      const {
+        services: initialServices,
+        status: initialStatus,
+      } = initialState;
+      const newState = {
+        services: services || initialServices,
+        status: {
+          balance: status?.balance || initialStatus.balance,
+          nextPayout: status?.next_payout || initialStatus.nextPayout,
+          currency: status?.currency || initialStatus.currency,
+        }
+      };
+      return newState;
     default:
       return state;
   }

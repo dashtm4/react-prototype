@@ -2,14 +2,12 @@ import { call, put, takeEvery } from 'redux-saga/effects'
 import actionTypes from '../actions'
 import { fetchServices } from '../../service/services';
 
-function * fetchServicesSaga (payload: any) {
+function * fetchServicesSaga () {
   try {
-    const res = yield call(fetchServices);
-    console.log('> res', res);
-
+    const { data: payload } = yield call(fetchServices);
     yield put({
-      type: actionTypes.FETCH_SERVICES,
-      response: res.data
+      type: actionTypes.FETCH_SERVICES_SUCCEED,
+      payload,
     });
   } catch (error) {
     console.log('> error: ', error);
