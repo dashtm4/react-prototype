@@ -6,16 +6,28 @@ import ServiceItem from '../../components/ServiceItem';
 
 import './Services.scss';
 
+interface IService {
+  title: string;
+  description: string;
+  link: string;
+  promocode: string;
+}
+
 interface IProps {
-  services: any;
+  searchWord: string | undefined;
+  filteredServices: any;
+  handleUpdateSearchWord: (
+    searchWord: string,
+  ) => void;
 }
 
 function ServicesPage({
-  services,
+  searchWord,
+  filteredServices,
+  handleUpdateSearchWord,
 }: IProps) {
   const handleReset = () => {
-    console.log('reset');
-    console.log(services);
+    handleUpdateSearchWord('');
   };
 
   return (
@@ -28,7 +40,8 @@ function ServicesPage({
           className="services--form-input"
           label="Filter"
           placeholder="Filter services..."
-          value="adsf"
+          value={searchWord}
+          onChange={handleUpdateSearchWord}
         />
         <BaseButton
           className="reset--button"
@@ -37,18 +50,18 @@ function ServicesPage({
           variant="outlined"
         />
       </div>
-      <ServiceItem
-        className="services--item"
-        name="Sitecostructor.io"
-        description="Description"
-        promoCode="itpromocodes"
-      />
-      <ServiceItem
-        className="service-item"
-        name="Sitecostructor.io"
-        description="Description"
-        promoCode="itpromocodes"
-      />
+      {filteredServices.map((
+        service: IService,
+        serviceIndex: number,
+      ) =>
+        <ServiceItem
+          className="services--item"
+          name={service.title}
+          description={service.description}
+          promoCode={service.promocode}
+          key={serviceIndex}
+        />
+      )}
     </section>
   )
 };

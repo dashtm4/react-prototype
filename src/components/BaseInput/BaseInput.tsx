@@ -8,6 +8,9 @@ interface IProps {
   children?: any;
   placeholder?: string;
   value?: string;
+  onChange?: (
+    value: string,
+  ) => void;
 }
 
 function BaseInput({
@@ -15,14 +18,21 @@ function BaseInput({
   children,
   placeholder,
   value,
+  onChange,
 }: IProps) {
+  const handleChange = (event: any) => {
+    const updatedValue: string = event.target.value;
+    if(onChange) onChange(updatedValue);
+  };
+
   return (
     <div className={wrapperStyle}>
       <input
         type="text"
         className={clsx("base-input--wrapper")}
         placeholder={placeholder}
-        defaultValue={value}
+        value={value}
+        onChange={handleChange}
       />
       {children}
     </div>

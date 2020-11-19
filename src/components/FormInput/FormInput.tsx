@@ -11,6 +11,9 @@ interface IProps {
   label: string;
   placeholder?: string;
   value?: string;
+  onChange?: (
+    value: string,
+  ) => void;
 }
 
 function FormInput({
@@ -19,6 +22,7 @@ function FormInput({
   label,
   placeholder,
   value,
+  onChange,
 }: IProps) {
   return (
     <div className={clsx(wrapperStyle, "form-input--wrapper")}>
@@ -27,6 +31,7 @@ function FormInput({
         className="form-input--element"
         placeholder={placeholder}
         value={value}
+        onChange={onChange}
       >
         {children}
       </BaseInput>
