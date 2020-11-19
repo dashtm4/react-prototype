@@ -11,6 +11,7 @@ interface IStatus {
   balance: number;
   nextPayout: number;
   currency: string;
+  activated?: boolean;
 }
 
 interface IState {
@@ -52,6 +53,26 @@ const service = (
         }
       };
       return newState;
+    case actionTypes.ACTIVATE_PROMOCODE_SUCCEED:
+      const { payload } = action;
+      if (payload.message === 'SUCCESS') {
+        return {
+          ...state,
+          services: state.services.map((service: IService) => {
+            if (
+              service.link === payload.link &&
+              service.promocode === payload.promoCode
+            ) {
+              return {
+                ...service,
+                activated: true,
+              }
+            }
+            return service;
+          }),
+        }
+      }
+      return state;
     default:
       return state;
   }

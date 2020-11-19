@@ -13,17 +13,30 @@ interface IProps {
   name: string;
   description: string;
   promoCode: string;
+  link: string;
+  activated?: boolean;
+  onActivate: (
+    link: string,
+    promoCode: string,
+  ) => void;
 }
 
 function ServiceItem({
   className: wrapperStyle,
   name,
   description,
+  link,
+  activated,
   promoCode,
+  onActivate,
 }: IProps) {
   const handlePrependClick = (ref: RefObject<HTMLInputElement>) => {
     ref?.current?.select();
     document.execCommand('copy');
+  };
+
+  const handleActivate = () => {
+    onActivate(link, promoCode);
   };
 
   return (
@@ -47,7 +60,9 @@ function ServiceItem({
         </FormInput>
         <BaseButton
           className="activate--button"
-          label="Active bonus"
+          label={activated ? 'Activated' : 'Active bonus'}
+          disabled={activated}
+          onClick={handleActivate}
         />
       </div>
     </BaseCard>

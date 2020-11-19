@@ -11,6 +11,7 @@ interface IService {
   description: string;
   link: string;
   promocode: string;
+  activated?: boolean;
 }
 
 interface IProps {
@@ -19,12 +20,17 @@ interface IProps {
   handleUpdateSearchWord: (
     searchWord: string,
   ) => void;
+  handleActivate: (
+    link: string,
+    promoCode: string,
+  ) => void;
 }
 
 function ServicesPage({
   searchWord,
   filteredServices,
   handleUpdateSearchWord,
+  handleActivate,
 }: IProps) {
   const handleReset = () => {
     handleUpdateSearchWord('');
@@ -59,7 +65,10 @@ function ServicesPage({
           name={service.title}
           description={service.description}
           promoCode={service.promocode}
+          link={service.link}
+          activated={service.activated || false}
           key={serviceIndex}
+          onActivate={handleActivate}
         />
       )}
     </section>

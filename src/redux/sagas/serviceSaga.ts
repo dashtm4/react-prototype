@@ -18,6 +18,27 @@ function * fetchServicesWatcher () {
   yield takeEvery(actionTypes.FETCH_SERVICES, fetchServicesSaga);
 }
 
+function * activatePromoCodeSaga ({ payload }: any) {
+  const { link, promoCode } = payload;
+  try {
+    yield put({
+      type: actionTypes.ACTIVATE_PROMOCODE_SUCCEED,
+      payload: {
+        message: 'SUCCESS',
+        link,
+        promoCode,
+      },
+    });
+  } catch (error) {
+    console.log('> error: ', error);
+  }
+}
+
+function * activatePromoCodeWatcher () {
+  yield takeEvery(actionTypes.ACTIVATE_PROMOCODE, activatePromoCodeSaga);
+}
+
 export {
   fetchServicesWatcher,
+  activatePromoCodeWatcher,
 };

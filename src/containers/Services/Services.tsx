@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { getServices } from '../../selectors';
-import { fetchServices } from '../../redux/actions';
+import { fetchServices, activatePromoCode } from '../../redux/actions';
 import ServicesPage from './ServicesPage';
 
 interface IService {
@@ -20,6 +20,7 @@ type TProps =
 function Services({
   services,
   fetchServices,
+  activatePromoCode,
 }: TProps) {
   const [filteredServices, setFilteredServices] = useState([]);
   const [searchWord, setSearchWord] = useState('');
@@ -41,11 +42,21 @@ function Services({
     setSearchWord(newSearchWord);
   };
 
+  const handleActivate = (
+    link: string,
+    promoCode: string,
+  ) => {
+    activatePromoCode({
+      link,
+      promoCode,
+    });
+  };
   return (
     <ServicesPage
       searchWord={searchWord}
       filteredServices={filteredServices}
       handleUpdateSearchWord={handleUpdateSearchWord}
+      handleActivate={handleActivate}
     />
   )
 };
@@ -58,6 +69,7 @@ const mapDispatchToProps = (dispatch: any) => ({
   ...bindActionCreators(
     {
       fetchServices,
+      activatePromoCode,
     },
     dispatch,
   )
