@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { I18nextProvider } from 'react-i18next';
 
-import App from './containers/App';
-import store from './redux/store';
+import App from '@/containers/App';
+import store from '@/redux/store';
+import i18n from '@/i18n';
 
 import reportWebVitals from './reportWebVitals';
-import i18n from './i18n';
 import './index.css';
 
 

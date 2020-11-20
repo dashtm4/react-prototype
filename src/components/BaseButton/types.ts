@@ -1,5 +1,5 @@
 type TVariant =
-  | "outlined"
-  | "contained";
+  | "contained"
+  | "outlined";
 
 export type { TVariant };

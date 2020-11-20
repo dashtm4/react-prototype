@@ -2,17 +2,17 @@ import React, { useState } from 'react'
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 
-import { formatNumber } from '../../utils/helpers';
-import { CURRENCY_TYPES } from '../../utils/constants';
+import { formatNumber } from '@/utils/helpers';
+import { CURRENCY_TYPES } from '@/utils/constants';
 
-import LangEN from '../../assets/images/lang-en.png';
-import LangIE from '../../assets/images/lang-ie.png';
+import LangEN from '@/assets/images/lang-en.png';
+import LangIE from '@/assets/images/lang-ie.png';
 import './TopBar.scss';
 
 interface IStatus {
   balance: number;
-  nextPayout: number;
   currency: string;
+  nextPayout: number;
 };
 
 interface IProps {
@@ -25,7 +25,6 @@ function TopBarPage({
   status,
 }: IProps) {
   const { t, i18n } = useTranslation();
-
   const [lang, setLang] = useState('en');
   const {
     balance,
@@ -43,27 +42,35 @@ function TopBarPage({
       <div className="top-bar--status">
         <div className="top-bar--status-left">
           <div className="top-bar--status-item">
-            <div className="label">{t('Balance')}</div>
-            <div className="price">{formatNumber(balance)} {CURRENCY_TYPES[(currency as keyof {})]}</div>
+            <div className="label">
+              {t('Balance')}
+            </div>
+            <div className="price">
+              {formatNumber(balance)} {CURRENCY_TYPES[(currency as keyof {})]}
+            </div>
           </div>
           <div className="top-bar--status-item">
-            <div className="label">{t('Payout')}</div>
-            <div className="price">{formatNumber(nextPayout)} {CURRENCY_TYPES[currency as keyof {}]}</div>
+            <div className="label">
+              {t('Payout')}
+            </div>
+            <div className="price">
+              {formatNumber(nextPayout)} {CURRENCY_TYPES[currency as keyof {}]}
+            </div>
           </div>
         </div>
 
         <div className="top-bar--status-right">
           <div onClick={handleSwitchLang('en')}>
             <img
-              src={LangEN}
               className={lang === 'en' ? 'active' : ''}
+              src={LangEN}
               alt="lang-en"
             />
           </div>
           <div onClick={handleSwitchLang('ie')}>
             <img
-              src={LangIE}
               className={lang === 'ie' ? 'active' : ''}
+              src={LangIE}
               alt="lang-en"
             />
           </div>

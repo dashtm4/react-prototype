@@ -3,21 +3,22 @@ import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { Tooltip } from 'react-tippy';
 
-import BaseCard from '../BaseCard';
-import FormInput from '../FormInput';
-import BaseButton from '../BaseButton';
-import Clipboard from '../Clipboard';
+import BaseCard from '@/components/BaseCard';
+import FormInput from '@/components/FormInput';
+import BaseButton from '@/components/BaseButton';
+import Clipboard from '@/components/Clipboard';
 
 import 'react-tippy/dist/tippy.css';
 import './ServiceItem.scss';
 
 interface IProps {
-  className?: string;
-  name: string;
-  description: string;
-  promoCode: string;
-  link: string;
   activated?: boolean;
+  className?: string;
+  description: string;
+  link: string;
+  name: string;
+  promoCode: string;
+
   onActivate: (
     link: string,
     promoCode: string,
@@ -25,16 +26,17 @@ interface IProps {
 }
 
 function ServiceItem({
+  activated,
   className: wrapperStyle,
-  name,
   description,
   link,
-  activated,
+  name,
   promoCode,
   onActivate,
 }: IProps) {
   const { t } = useTranslation();
   const [showToolTip, setShowToolTip] = useState(false);
+
   const handlePrependClick = (ref: RefObject<HTMLInputElement>) => {
     ref?.current?.select();
     document.execCommand('copy');
@@ -47,7 +49,10 @@ function ServiceItem({
   };
 
   return (
-    <BaseCard className={clsx(wrapperStyle, "service-item--wrapper")}>
+    <BaseCard className={clsx(
+      wrapperStyle,
+      "service-item--wrapper",
+    )}>
       <div>
         <div className="name">
           {name}
@@ -70,8 +75,8 @@ function ServiceItem({
         >
           <FormInput
             className="service-item--form-input"
+            defaultValue={promoCode}
             label={t('Promocode')}
-            value={promoCode}
             onChildrenClick={handlePrependClick}
           >
             <Clipboard className="input--append"/>
@@ -79,8 +84,8 @@ function ServiceItem({
         </Tooltip>
         <BaseButton
           className="activate--button"
-          label={activated ? t('Activated') : t('Activate bonus')}
           disabled={activated}
+          label={activated ? t('Activated') : t('Activate bonus')}
           onClick={handleActivate}
         />
       </div>

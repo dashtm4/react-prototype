@@ -6,9 +6,9 @@
   background-color: $color--content-bg;
 
   .footer--content {
-    @include font-style($color--footer-desc, 'Roboto', 13px);
     @include flex-layout();
     @include flex-layout-align(flex-end, center);
+    @include font-style($color--footer-desc, 'Roboto', 13px);
     box-sizing: border-box;
     border-top: 2px solid $color--divider;
     padding: 0 30px;

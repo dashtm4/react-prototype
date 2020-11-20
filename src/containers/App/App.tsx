@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
-import TopBar from 'src/containers/TopBar';
+import TopBar from '@/containers/TopBar';
 import SideBar from '@/containers/SideBar';
-import Footer from '../Footer';
-import Content from '../Content';
+import Footer from '@/containers/Footer';
+import Content from '@/containers/Content';
 
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import './App.scss';

@@ -13,5 +13,5 @@ module.exports = override(
   }),
   addWebpackPlugin(
     new TsconfigPathsPlugin(),
-  )
-)
+  ),
+);

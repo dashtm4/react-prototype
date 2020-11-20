@@ -15,7 +15,7 @@ $color-blue--500: #2F80ED;
 $color-blue--700: #0085FF;
 
 
-///
+
 $color--focus: $color-blue--500;
 $color--focus-blur: $color-blue--200;
 $color--active: $color-blue--700;
@@ -25,19 +25,18 @@ $color--primary: $color-dark--600;
 
 $color--sidebar-bg: $color-dark--500;
 $color--sidebar-item: $color-light--400;
+$color--footer-desc: $color-light--300;
 $color--content-bg: $color-light--200;
 $color--divider: $color-light--250;
 $color--card-border: $color-light--260;
-$color--footer-desc: $color-light--300;
 $color--button-hover: $color-light--200;
 $color--button-active: $color-light--250;
 $color--button-disabled: $color-light--300;
 
 
-///
+
 $font-primary: 'Roboto';
 
 $width--sidebar: 80px;
-
 $height--top-bar: 80px;
 $height--footer: 50px;

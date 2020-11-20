@@ -1,23 +1,24 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import BaseButton from '../../components/BaseButton';
-import FormInput from '../../components/FormInput';
-import ServiceItem from '../../components/ServiceItem';
+import BaseButton from '@/components/BaseButton';
+import FormInput from '@/components/FormInput';
+import ServiceItem from '@/components/ServiceItem';
 
 import './Services.scss';
 
 interface IService {
-  title: string;
+  activated?: boolean;
   description: string;
   link: string;
   promocode: string;
-  activated?: boolean;
+  title: string;
 }
 
 interface IProps {
-  searchWord: string | undefined;
   filteredServices: any;
+  searchWord: string | undefined;
+
   handleUpdateSearchWord: (
     searchWord: string,
   ) => void;
@@ -28,8 +29,8 @@ interface IProps {
 }
 
 function ServicesPage({
-  searchWord,
   filteredServices,
+  searchWord,
   handleUpdateSearchWord,
   handleActivate,
 }: IProps) {
@@ -55,8 +56,8 @@ function ServicesPage({
         <BaseButton
           className="reset--button"
           label={t('Reset')}
-          onClick={handleReset}
           variant="outlined"
+          onClick={handleReset}
         />
       </div>
       {filteredServices.map((
@@ -64,13 +65,13 @@ function ServicesPage({
         serviceIndex: number,
       ) =>
         <ServiceItem
-          className="services--item"
-          name={service.title}
-          description={service.description}
-          promoCode={service.promocode}
-          link={service.link}
           activated={service.activated || false}
+          className="services--item"
+          description={service.description}
           key={serviceIndex}
+          link={service.link}
+          name={service.title}
+          promoCode={service.promocode}
           onActivate={handleActivate}
         />
       )}

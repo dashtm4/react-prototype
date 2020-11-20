@@ -6,20 +6,25 @@ import BaseInput from '../BaseInput';
 import './FormInput.scss';
 
 interface IProps {
-  className?: string;
   children?: any;
+  className?: string;
+  defaultValue?: string;
   label: string;
   placeholder?: string;
   value?: string;
+
   onChange?: (
     value: string,
   ) => void;
-  onChildrenClick?: (ref: RefObject<HTMLInputElement>) => void;
+  onChildrenClick?: (
+    ref: RefObject<HTMLInputElement>
+  ) => void;
 }
 
 function FormInput({
-  className: wrapperStyle,
   children,
+  className: wrapperStyle,
+  defaultValue,
   label,
   placeholder,
   value,
@@ -27,10 +32,16 @@ function FormInput({
   onChildrenClick,
 }: IProps) {
   return (
-    <div className={clsx(wrapperStyle, "form-input--wrapper")}>
-      <div className="label">{label}</div>
+    <div className={clsx(
+      wrapperStyle,
+      "form-input--wrapper",
+    )}>
+      <div className="label">
+        {label}
+      </div>
       <BaseInput
         className="form-input--element"
+        defaultValue={defaultValue}
         placeholder={placeholder}
         value={value}
         onChange={onChange}

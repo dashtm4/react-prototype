@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 
-import Logo from '../../components/Logo';
-import { PATHS } from '../../utils/constants';
+import Logo from '@/components/Logo';
+import { PATHS } from '@/utils/constants';
 
 import { sidebarItems } from './constants';
 import { ISidebarItem } from './types';
@@ -23,7 +23,10 @@ function SideBar({
   };
 
   return (
-    <div className={clsx(wrapperStyle, "sidebar--wrapper")}>
+    <div className={clsx(
+      wrapperStyle,
+      "sidebar--wrapper",
+    )}>
       <div className="logo">
         <Logo />
       </div>
@@ -33,8 +36,8 @@ function SideBar({
       ) => (
         <RouterLink
           className="sidebar-item"
-          to={PATHS[item.link]}
           key={itemIndex}
+          to={PATHS[item.link]}
           onClick={handleRouting(item.link)}
         >
           <div

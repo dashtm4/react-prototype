@@ -1,18 +1,15 @@
 import React from 'react'
 import { connect, ConnectedProps } from 'react-redux';
 
-import { getStatus } from '../../selectors';
+import { getStatus } from '@/selectors';
+
 import TopBarPage from './TopBarPage';
 
 type TProps = ConnectedProps<typeof connector>;
 
-function TopBar({
-  status,
-}: TProps) {
+function TopBar({ status }: TProps) {
   return (
-    <TopBarPage
-      status={status}
-    />
+    <TopBarPage status={status} />
   )
 };
 

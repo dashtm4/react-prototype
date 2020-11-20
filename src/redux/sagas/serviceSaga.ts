@@ -1,10 +1,12 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
-import actionTypes from '../actions'
-import { fetchServices } from '../../service/services';
+
+import { fetchServices } from '@/service/services';
+import actionTypes from '@/redux/actions'
 
 function * fetchServicesSaga () {
   try {
     const { data: payload } = yield call(fetchServices);
+
     yield put({
       type: actionTypes.FETCH_SERVICES_SUCCEED,
       payload,
@@ -39,6 +41,6 @@ function * activatePromoCodeWatcher () {
 }
 
 export {
-  fetchServicesWatcher,
   activatePromoCodeWatcher,
+  fetchServicesWatcher,
 };

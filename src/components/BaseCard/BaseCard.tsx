@@ -4,16 +4,19 @@ import clsx from 'clsx';
 import './BaseCard.scss';
 
 interface IProps {
-  className?: string;
   children?: any;
+  className?: string;
 }
 
 function BaseCard({
-  className: wrapperStyle,
   children,
+  className: wrapperStyle,
 }: IProps) {
   return (
-    <div className={clsx(wrapperStyle, "base-card--wrapper")}>
+    <div className={clsx(
+      wrapperStyle,
+      "base-card--wrapper",
+    )}>
       {children}
     </div>
   )

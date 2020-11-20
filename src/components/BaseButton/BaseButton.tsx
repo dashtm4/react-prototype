@@ -6,22 +6,27 @@ import './BaseButton.scss';
 
 interface IProps {
   className?: string,
+  disabled?: boolean,
   label: string,
   variant?: TVariant,
-  disabled?: boolean,
+
   onClick?: () => void,
 }
 
 function BaseButton({
   className: wrapperStyle,
+  disabled,
   label,
   variant = 'contained',
-  disabled,
   onClick,
 }: IProps) {
   return (
     <button
-      className={clsx(wrapperStyle, "base-button--wrapper", variant)}
+      className={clsx(
+        wrapperStyle,
+        "base-button--wrapper",
+        variant,
+      )}
       disabled={disabled}
       onClick={onClick}
     >

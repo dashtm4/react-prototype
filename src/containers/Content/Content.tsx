@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 import clsx from 'clsx';
 
-import Services from '../Services';
+import Services from '@/containers/Services';
 
 import './Content.scss';
 
@@ -17,7 +17,10 @@ function Content({
   className: wrapperStyle,
 }: IProps) {
   return (
-    <div className={clsx(wrapperStyle, "content--wrapper")}>
+    <div className={clsx(
+      wrapperStyle,
+      "content--wrapper",
+    )}>
       <Switch>
         <Route>
           <Services />

@@ -1,4 +1,4 @@
-import actionTypes from '../actions';
+import actionTypes from '@/redux/actions';
 
 interface IService {
   title: string;
@@ -44,7 +44,8 @@ const service = (
         services: initialServices,
         status: initialStatus,
       } = initialState;
-      const newState = {
+
+      return {
         services: services || initialServices,
         status: {
           balance: status?.balance || initialStatus.balance,
@@ -52,24 +53,19 @@ const service = (
           currency: status?.currency.toUpperCase() || initialStatus.currency,
         }
       };
-      return newState;
     case actionTypes.ACTIVATE_PROMOCODE_SUCCEED:
       const { payload } = action;
+
       if (payload.message === 'SUCCESS') {
         return {
           ...state,
-          services: state.services.map((service: IService) => {
-            if (
-              service.link === payload.link &&
-              service.promocode === payload.promoCode
-            ) {
-              return {
-                ...service,
-                activated: true,
-              }
-            }
-            return service;
-          }),
+          services: state.services.map((service: IService) => ({
+              ...service,
+              activated: (
+                service.link === payload.link &&
+                service.promocode === payload.promoCode
+              ) ? true : false,
+          })),
         }
       }
       return state;

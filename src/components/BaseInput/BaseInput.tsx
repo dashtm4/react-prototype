@@ -1,22 +1,30 @@
-import React, { createRef, RefObject } from 'react'
-import clsx from 'clsx';
+import React, {
+  ChangeEvent,
+  createRef,
+  RefObject,
+} from 'react'
 
 import './BaseInput.scss';
 
 interface IProps {
-  className?: string;
   children?: any;
+  className?: string;
+  defaultValue?: string;
   placeholder?: string;
   value?: string;
+
   onChange?: (
     value: string,
   ) => void;
-  onChildrenClick?: (ref: RefObject<HTMLInputElement>) => void;
+  onChildrenClick?: (
+    ref: RefObject<HTMLInputElement>
+  ) => void;
 }
 
 function BaseInput({
-  className: wrapperStyle,
   children,
+  className: wrapperStyle,
+  defaultValue,
   placeholder,
   value,
   onChange,
@@ -24,25 +32,25 @@ function BaseInput({
 }: IProps) {
   const inputRef = createRef<HTMLInputElement>();
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const updatedValue: string = event.target.value;
-    if(onChange) onChange(updatedValue);
+
+    onChange && onChange(updatedValue);
   };
 
   const handleChildrenClick = () => {
-    if (onChildrenClick) {
-      onChildrenClick(inputRef);
-    }
+    onChildrenClick && onChildrenClick(inputRef);
   };
 
   return (
     <div className={wrapperStyle}>
       <input
-        type="text"
-        className={clsx("base-input--wrapper")}
+        className="base-input--wrapper"
+        defaultValue={defaultValue}
         placeholder={placeholder}
-        value={value}
         ref={inputRef}
+        type="text"
+        value={value}
         onChange={handleChange}
       />
       <div onClick={handleChildrenClick}>

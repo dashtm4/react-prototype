@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { getServices } from '../../selectors';
-import { fetchServices, activatePromoCode } from '../../redux/actions';
+import { getServices } from '@/selectors';
+import { fetchServices, activatePromoCode } from '@/redux/actions';
+
 import ServicesPage from './ServicesPage';
 
 interface IService {
-  title: string;
   description: string;
   link: string;
   promocode: string;
+  title: string;
 }
 
 type TProps =
@@ -19,8 +20,8 @@ type TProps =
 
 function Services({
   services,
-  fetchServices,
   activatePromoCode,
+  fetchServices,
 }: TProps) {
   const [filteredServices, setFilteredServices] = useState([]);
   const [searchWord, setSearchWord] = useState('');
@@ -53,10 +54,10 @@ function Services({
   };
   return (
     <ServicesPage
-      searchWord={searchWord}
       filteredServices={filteredServices}
-      handleUpdateSearchWord={handleUpdateSearchWord}
       handleActivate={handleActivate}
+      handleUpdateSearchWord={handleUpdateSearchWord}
+      searchWord={searchWord}
     />
   )
 };
@@ -68,8 +69,8 @@ const mapStateToProps = (state: any) => ({
 const mapDispatchToProps = (dispatch: any) => ({
   ...bindActionCreators(
     {
-      fetchServices,
       activatePromoCode,
+      fetchServices,
     },
     dispatch,
   )
