@@ -1,7 +1,9 @@
 @import '../../styles';
 
 .top-bar--wrapper {
+  z-index: 1;
   padding: 18px 32px;
+  box-shadow: 0 0 5px #CFD2D9;
   background-color: $color-white;
 
   .top-bar--status {

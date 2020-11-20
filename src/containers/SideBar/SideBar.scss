@@ -1,6 +1,7 @@
 @import '../../styles';
 
 .sidebar--wrapper {
+  z-index: 2;
   background-color: $color--sidebar-bg;
 
   .logo {
