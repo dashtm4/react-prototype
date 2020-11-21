@@ -47,7 +47,7 @@ const service = (
               activated: (
                 service.link === payload.link &&
                 service.promocode === payload.promoCode
-              ) ? true : false,
+              ) ? true : service.activated,
           })),
         }
       }
