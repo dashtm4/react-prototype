@@ -1,3 +1,5 @@
+import { IActivatePromoCodeParam } from './types';
+
 const serviceActionTypes = {
   FETCH_SERVICES: 'FETCH_SERVICES',
   FETCH_SERVICES_SUCCEED: 'FETCH_SERVICES_SUCCEED',
@@ -10,7 +12,7 @@ const fetchServices = () => ({
   type: serviceActionTypes.FETCH_SERVICES,
 });
 
-const activatePromoCode = (payload: any) => ({
+const activatePromoCode = (payload: IActivatePromoCodeParam) => ({
   type: serviceActionTypes.ACTIVATE_PROMOCODE,
   payload,
 });

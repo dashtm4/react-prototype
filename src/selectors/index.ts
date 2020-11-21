@@ -1,8 +1,10 @@
 // import { createSelector } from 'reselect'
 
-const getServices = (state: any) => state.service.services;
+import { IRootState } from 'src/redux/reducers/types';
 
-const getStatus = (state: any) => state.service.status;
+const getServices = (state: IRootState ) => state.service.services;
+
+const getStatus = (state: IRootState) => state.service.status;
 
 export {
   getServices,

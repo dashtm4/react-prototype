@@ -4,16 +4,12 @@ import { useTranslation } from 'react-i18next';
 
 import { formatNumber } from '@/utils/helpers';
 import { CURRENCY_TYPES } from '@/utils/constants';
+import { IStatus } from 'src/redux/reducers/types';
 
 import LangEN from '@/assets/images/lang-en.png';
 import LangIE from '@/assets/images/lang-ie.png';
 import './TopBar.scss';
 
-interface IStatus {
-  balance: number;
-  currency: string;
-  nextPayout: number;
-};
 
 interface IProps {
   className?: string;

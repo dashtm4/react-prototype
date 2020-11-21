@@ -2,6 +2,7 @@ import React from 'react'
 import { connect, ConnectedProps } from 'react-redux';
 
 import { getStatus } from '@/selectors';
+import { IRootState } from 'src/redux/reducers/types';
 
 import TopBarPage from './TopBarPage';
 
@@ -13,7 +14,7 @@ function TopBar({ status }: TProps) {
   )
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: IRootState) => ({
   status: getStatus(state),
 });
 

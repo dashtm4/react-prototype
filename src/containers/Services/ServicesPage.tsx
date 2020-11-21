@@ -4,19 +4,12 @@ import { useTranslation } from 'react-i18next';
 import BaseButton from '@/components/BaseButton';
 import FormInput from '@/components/FormInput';
 import ServiceItem from '@/components/ServiceItem';
+import { IService } from 'src/redux/reducers/types';
 
 import './Services.scss';
 
-interface IService {
-  activated?: boolean;
-  description: string;
-  link: string;
-  promocode: string;
-  title: string;
-}
-
 interface IProps {
-  filteredServices: any;
+  filteredServices: IService[];
   searchWord: string | undefined;
 
   handleUpdateSearchWord: (

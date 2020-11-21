@@ -4,15 +4,9 @@ import { bindActionCreators } from 'redux';
 
 import { getServices } from '@/selectors';
 import { fetchServices, activatePromoCode } from '@/redux/actions';
+import { IService, IRootState } from 'src/redux/reducers/types';
 
 import ServicesPage from './ServicesPage';
-
-interface IService {
-  description: string;
-  link: string;
-  promocode: string;
-  title: string;
-}
 
 type TProps =
   & ReturnType<typeof mapStateToProps>
@@ -23,7 +17,7 @@ function Services({
   activatePromoCode,
   fetchServices,
 }: TProps) {
-  const [filteredServices, setFilteredServices] = useState([]);
+  const [filteredServices, setFilteredServices] = useState<IService[]>([]);
   const [searchWord, setSearchWord] = useState('');
 
   useEffect(() => {
@@ -62,7 +56,7 @@ function Services({
   )
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: IRootState) => ({
   services: getServices(state),
 });
 

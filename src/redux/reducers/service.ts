@@ -1,25 +1,8 @@
 import actionTypes from '@/redux/actions';
 
-interface IService {
-  title: string;
-  description: string;
-  link: string;
-  promocode: string;
-}
+import { IService, IServiceState } from './types';
 
-interface IStatus {
-  balance: number;
-  nextPayout: number;
-  currency: string;
-  activated?: boolean;
-}
-
-interface IState {
-  services: IService[];
-  status: IStatus;
-}
-
-const initialState: IState = {
+const initialState: IServiceState = {
   services: [],
   status: {
     balance: 0,
@@ -29,15 +12,15 @@ const initialState: IState = {
 };
 
 const service = (
-  state: IState = initialState,
+  state: IServiceState = initialState,
   action: any,
 ) => {
   switch (action.type) {
     case actionTypes.FETCH_SERVICES_SUCCEED:
       const {
         payload: {
-          bonuses: services,
-          header: status,
+          services,
+          status,
         },
       } = action;
       const {
